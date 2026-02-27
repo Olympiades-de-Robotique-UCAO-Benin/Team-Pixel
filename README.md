@@ -19,72 +19,13 @@
 | Informations | Détails |
 |---|---|
 | Compétition | Olympiade de Robotique UCAO 2026 |
-| Numéro d'équipe | Équipe #3 |
 | Institution | UCAO-UUC Bénin |
 | Catégorie | Suivi de ligne |
 | Statut | Actif |
 
 ---
 
-## 👥 Membres de l'équipe
-
-> *Les informations sur les membres seront mises à jour prochainement.*
-
-| Nom | Rôle | Faculté |
-|---|---|---|
-| — | Chef d'équipe | — |
-| — | Développeur | — |
-| — | Électronicien | — |
-| — | Mécanicien | — |
-| — | Designer | — |
-| — | Logisticien | — |
-| — | Membre | — |
-
----
-
-## 🤖 Notre Robot
-
-> *La fiche technique du robot sera complétée au fil de la préparation.*
-
-| Spécification | Valeur |
-|---|---|
-| Nom du robot | — |
-| Type de châssis | — |
-| Carte de contrôle | — |
-| Capteurs | — |
-| Langage de programmation | — |
-| Stratégie | — |
-
----
-
-## 📁 Structure du dépôt
-
-```
-Team-Pixel/
-├── README.md               ← Ce fichier
-├── code/                   ← Code source du robot
-│   ├── main.ino            ← Programme principal
-│   └── ...
-├── hardware/               ← Schémas électroniques & plans
-│   ├── schema.pdf
-│   └── ...
-├── docs/                   ← Documentation complémentaire
-│   ├── journal-de-bord.md  ← Journal de progression
-│   └── ...
-└── media/                  ← Photos & vidéos du robot
-```
-
----
-
-## 📓 Journal de bord
-
-| Date | Séance | Description |
-|---|---|---|
-| — | — | *Le journal sera mis à jour au fil des séances de préparation.* |
-
----
-
-## 📚 Ressources utiles
+##  Ressources utiles
 
 - 📖 [Guide Technique Officiel ORC 2026](https://github.com/Olympiades-de-Robotique-UCAO-Benin/guide-technique-officiel)
 - 🧠 [Ressources de formation](https://github.com/Olympiades-de-Robotique-UCAO-Benin/ressources-formations)

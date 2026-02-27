@@ -4,6 +4,7 @@
 
 ![ORC 2026](https://img.shields.io/badge/ORC_2026-Compétition_Officielle-8b5cf6?style=for-the-badge)
 ![Équipe #3](https://img.shields.io/badge/Équipe-%233-8b5cf6?style=for-the-badge)
+![EGEI](https://img.shields.io/badge/EGEI-8b5cf6?style=for-the-badge)
 ![UCAO-UUC](https://img.shields.io/badge/UCAO--UUC-Bénin-0057A8?style=for-the-badge)
 
 > **« La vision naît d'un PIXEL, l'innovation naît de nous. »**

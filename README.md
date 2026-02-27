@@ -1,2 +1,107 @@
-# Team-Pixel
-La vision naît d'un PIXEL , l'innovation naît de nous.
+# 🎨 Team Pixel
+
+<div align="center">
+
+![ORC 2026](https://img.shields.io/badge/ORC_2026-Compétition_Officielle-8b5cf6?style=for-the-badge)
+![Équipe #3](https://img.shields.io/badge/Équipe-%233-8b5cf6?style=for-the-badge)
+![UCAO-UUC](https://img.shields.io/badge/UCAO--UUC-Bénin-0057A8?style=for-the-badge)
+
+> **« La vision naît d'un PIXEL, l'innovation naît de nous. »**
+
+</div>
+
+---
+
+## 🏫 Présentation
+
+**Team Pixel** est l'une des 6 équipes participantes à l'**Olympiade de Robotique UCAO 2026 (ORC 2026)**, compétition inter-facultés organisée à l'Université Catholique de l'Afrique de l'Ouest — Unité Universitaire du Bénin.
+
+| Informations | Détails |
+|---|---|
+| Compétition | Olympiade de Robotique UCAO 2026 |
+| Numéro d'équipe | Équipe #3 |
+| Institution | UCAO-UUC Bénin |
+| Catégorie | Suivi de ligne |
+| Statut | Actif |
+
+---
+
+## 👥 Membres de l'équipe
+
+> *Les informations sur les membres seront mises à jour prochainement.*
+
+| Nom | Rôle | Faculté |
+|---|---|---|
+| — | Chef d'équipe | — |
+| — | Développeur | — |
+| — | Électronicien | — |
+| — | Mécanicien | — |
+| — | Designer | — |
+| — | Logisticien | — |
+| — | Membre | — |
+
+---
+
+## 🤖 Notre Robot
+
+> *La fiche technique du robot sera complétée au fil de la préparation.*
+
+| Spécification | Valeur |
+|---|---|
+| Nom du robot | — |
+| Type de châssis | — |
+| Carte de contrôle | — |
+| Capteurs | — |
+| Langage de programmation | — |
+| Stratégie | — |
+
+---
+
+## 📁 Structure du dépôt
+
+```
+Team-Pixel/
+├── README.md               ← Ce fichier
+├── code/                   ← Code source du robot
+│   ├── main.ino            ← Programme principal
+│   └── ...
+├── hardware/               ← Schémas électroniques & plans
+│   ├── schema.pdf
+│   └── ...
+├── docs/                   ← Documentation complémentaire
+│   ├── journal-de-bord.md  ← Journal de progression
+│   └── ...
+└── media/                  ← Photos & vidéos du robot
+```
+
+---
+
+## 📓 Journal de bord
+
+| Date | Séance | Description |
+|---|---|---|
+| — | — | *Le journal sera mis à jour au fil des séances de préparation.* |
+
+---
+
+## 📚 Ressources utiles
+
+- 📖 [Guide Technique Officiel ORC 2026](https://github.com/Olympiades-de-Robotique-UCAO-Benin/guide-technique-officiel)
+- 🧠 [Ressources de formation](https://github.com/Olympiades-de-Robotique-UCAO-Benin/ressources-formations)
+- 🌐 [Site officiel de la compétition](https://olympiades-de-robotique-ucao-benin.github.io)
+- 🏠 [Organisation GitHub ORC](https://github.com/Olympiades-de-Robotique-UCAO-Benin)
+
+---
+
+## 📞 Contact
+
+Pour toute question concernant la compétition :
+📧 [ucaotech@ucaobenin.org](mailto:ucaotech@ucaobenin.org)
+
+---
+
+<div align="center">
+
+*ORC 2026 — Olympiade de Robotique UCAO-UUC Bénin*
+
+</div>

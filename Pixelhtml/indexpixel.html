@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team PIXEL — Olympiades de Robotique UCAO 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --red: #e8192c;
+            --red-d: #b8001c;
+            --gold: #c9972a;
+            --gold-l: #e8b84b;
+            --navy: #0a1628;
+            --navy-l: #112040;
+            --navy-mid: #1a2e50;
+            --white: #0d1b2e;
+            --off: #112240;
+            --gray: #8ba5c8;
+            --light: #1e3a5f;
+            --text: #c8ddf5;
+            --shadow: 0 4px 24px rgba(0, 0, 0, .30);
+            --shadow-h: 0 12px 40px rgba(0, 0, 0, .45);
+            --radius: 16px;
+            --font: 'Montserrat', sans-serif;
+        }
+        /* DARK MODE — adapté pour le thème bleu marine */
+        
+        .dark {
+            --white: #060e1a;
+            --off: #0c1829;
+            --navy: #e8f0ff;
+            --navy-l: #c8ddf5;
+            --text: #ddeeff;
+            --gray: #8ba5c8;
+            --light: #1a2e4a;
+        }
+        
+        .dark #hero {
+            background: #040b16;
+        }
+        
+        .dark nav {
+            background: #060e1a;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, .6);
+        }
+        
+        .dark .hero-title {
+            color: #ffffff;
+        }
+        
+        .dark .hero-devise {
+            color: rgba(255, 255, 255, .65);
+        }
+        
+        .dark .hero-meta-item {
+            color: rgba(255, 255, 255, .8);
+        }
+        
+        .dark .btn-white {
+            background: transparent;
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, .4);
+        }
+        
+        .dark .btn-white:hover {
+            background: rgba(255, 255, 255, .1);
+        }
+        
+        .dark footer {
+            background: #040b16;
+        }
+        
+        .dark .stats-strip {
+            background: var(--red);
+        }
+        
+        .dark .member-card-rect {
+            background: #0c1829;
+        }
+        
+        .dark .ds-card {
+            background: #0c1829;
+        }
+        
+        .dark .materiel-card {
+            background: #0c1829;
+        }
+        
+        .dark .budget-card {
+            background: #0c1829;
+        }
+        
+        .dark .budget-card.total {
+            background: var(--red);
+            color: white;
+        }
+        
+        .dark .budget-card.total .budget-card-title,
+        .dark .budget-card.total .budget-card-amount,
+        .dark .budget-card.total .budget-card-desc {
+            color: white;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font);
+            color: var(--text);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+        /* ══ NAV ══ */
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, .4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5vw;
+            height: 68px;
+            border-bottom: 1px solid rgba(100, 160, 255, 0.1);
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .nav-logo-svg {
+            width: 44px;
+            height: 44px;
+        }
+        
+        .nav-brand {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #c8ddf5;
+            letter-spacing: -.01em;
+        }
+        
+        .nav-brand span {
+            color: var(--red);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: .2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: .72rem;
+            font-weight: 600;
+            color: #7aa0c8;
+            text-decoration: none;
+            padding: .5rem .75rem;
+            border-radius: 8px;
+            transition: color .2s, background .2s;
+            letter-spacing: .02em;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #6ab0ff;
+            background: rgba(100, 160, 255, .1);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+        }
+        
+        .hamburger span {
+            width: 24px;
+            height: 2.5px;
+            background: #c8ddf5;
+            border-radius: 2px;
+        }
+        
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #c8ddf5;
+            transition: color 0.2s;
+        }
+        
+        .theme-toggle:hover {
+            color: var(--red);
+        }
+        /* ══ HERO ══ */
+        
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #06101e 0%, #0d1f3c 50%, #0a1628 100%);
+            display: flex;
+            align-items: center;
+            padding: 68px 5vw 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--red), var(--gold));
+        }
+        
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .hs1 {
+            width: 600px;
+            height: 600px;
+            background: rgba(30, 80, 180, .15);
+            top: -150px;
+            right: -100px;
+        }
+        
+        .hs2 {
+            width: 350px;
+            height: 350px;
+            background: rgba(201, 151, 42, .07);
+            bottom: -80px;
+            left: -80px;
+        }
+        
+        .hs3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: #0d1b2e;
+            clip-path: ellipse(60% 100% at 50% 100%);
+        }
+        /* Subtle grid overlay on hero */
+        
+        #hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(100, 160, 255, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(100, 160, 255, .03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 0 140px;
+        }
+        
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(100, 160, 255, .12);
+            border: 1px solid rgba(100, 160, 255, .25);
+            color: #7ab8ff;
+            font-size: .7rem;
+            font-weight: 700;
+            padding: .4rem 1rem;
+            border-radius: 50px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-tag::before {
+            content: '●';
+            font-size: .5rem;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: .3
+            }
+        }
+        
+        h1.hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: #e8f0ff;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
+            letter-spacing: -.02em;
+        }
+        
+        h1.hero-title .accent {
+            color: var(--gold-l);
+            display: block;
+        }
+        
+        .hero-devise {
+            font-size: 1rem;
+            font-weight: 500;
+            color: rgba(200, 220, 255, .65);
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            border-left: 3px solid var(--gold);
+            padding-left: 1rem;
+        }
+        
+        .hero-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .82rem;
+            font-weight: 600;
+            color: rgba(200, 220, 255, .8);
+        }
+        
+        .hero-meta-item i {
+            color: var(--gold-l);
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-family: var(--font);
+            font-size: .78rem;
+            font-weight: 700;
+            padding: .85rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 2px solid transparent;
+            transition: all .25s;
+            cursor: pointer;
+            letter-spacing: .03em;
+        }
+        
+        .btn-red {
+            background: var(--red);
+            color: #fff;
+        }
+        
+        .btn-red:hover {
+            background: var(--red-d);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232, 25, 44, .35);
+        }
+        
+        .btn-white {
+            background: transparent;
+            color: #c8ddf5;
+            border-color: rgba(200, 220, 255, .3);
+        }
+        
+        .btn-white:hover {
+            background: rgba(200, 220, 255, .08);
+            transform: translateY(-2px);
+        }
+        
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-photo-main {
+            width: 320px;
+            height: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+            background: rgba(100, 160, 255, .06);
+            border: 1px solid rgba(100, 160, 255, .15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-photo-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-photo-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(200, 220, 255, .35);
+        }
+        
+        .hero-photo-placeholder i {
+            font-size: 3rem;
+        }
+        
+        .hero-photo-placeholder p {
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+            text-align: center;
+        }
+        
+        .hero-badge {
+            position: absolute;
+            background: #112240;
+            border: 1px solid rgba(100, 160, 255, .2);
+            border-radius: 14px;
+            padding: .8rem 1.2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
+            z-index: 3;
+        }
+        
+        .hb1 {
+            top: 30px;
+            right: -20px;
+        }
+        
+        .hb2 {
+            bottom: 50px;
+            left: -30px;
+        }
+        
+        .hero-badge .hb-num {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--red);
+            display: block;
+            line-height: 1;
+        }
+        
+        .hero-badge .hb-label {
+            font-size: .6rem;
+            font-weight: 700;
+            color: #7aa0c8;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+        /* ══ SECTION COMMONS ══ */
+        
+        section {
+            padding: 90px 5vw;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-eyebrow {
+            font-size: .68rem;
+            font-weight: 700;
+            color: #6ab0ff;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            margin-bottom: .7rem;
+            display: block;
+        }
+        
+        h2.section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 900;
+            color: #c8ddf5;
+            line-height: 1.15;
+            margin-bottom: .8rem;
+        }
+        
+        h2.section-title span {
+            color: var(--gold);
+        }
+        
+        .section-divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), var(--gold));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .section-sub {
+            color: #7aa0c8;
+            font-size: .95rem;
+            max-width: 500px;
+            margin: 1rem auto 0;
+        }
+        /* ══ ROBOT ══ */
+        
+        #robot {
+            background: #0d1b2e;
+        }
+        
+        .robot-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 800px);
+            justify-items: center;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .robot-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .robot-intro {
+            width: 100%;
+            padding: 2rem;
+            background: #112240;
+            border: 1px solid rgba(100, 160, 255, .12);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .robot-intro-title {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #c8ddf5;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+        
+        .robot-intro-text {
+            font-size: 0.95rem;
+            color: #7aa0c8;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        .robot-image-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-h);
+            background: linear-gradient(135deg, #0a1628, #112240);
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .robot-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: rgba(200, 220, 255, .3);
+        }
+        
+        .robot-photo-placeholder i {
+            font-size: 4rem;
+        }
+        
+        .robot-photo-placeholder p {
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+        }
+        
+        .robot-chip {
+            position: absolute;
+            background: #112240;
+            border: 1px solid rgba(100, 160, 255, .2);
+            border-radius: 12px;
+            padding: .6rem 1rem;
+            box-shadow: var(--shadow-h);
+            font-size: .72rem;
+            font-weight: 700;
+            color: #c8ddf5;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            white-space: nowrap;
+        }
+        
+        .robot-chip i {
+            color: var(--red);
+        }
+        
+        .spec-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.1rem 1.3rem;
+            border-radius: 12px;
+            background: #112240;
+            border: 1px solid rgba(100, 160, 255, .1);
+            border-left: 4px solid transparent;
+            transition: border-color .2s, box-shadow .2s;
+        }
+        
+        .spec-item:hover {
+            border-color: var(--red);
+            box-shadow: var(--shadow);
+        }
+        
+        .spec-key {
+            font-size: .62rem;
+            font-weight: 700;
+            color: #6ab0ff;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            margin-bottom: .25rem;
+        }
+        
+        .spec-val {
+            font-size: .9rem;
+            font-weight: 600;
+            color: #c8ddf5;
+        }
+        /* ══ PHOTO ÉQUIPE ══ */
+        
+        #photo-equipe {
+            background: #0a1628;
+        }
+        
+        .team-photo-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-h);
+            position: relative;
+            border: 1px solid rgba(100, 160, 255, .1);
+        }
+        
+        .team-photo-wrap img {
+            width: 100%;
+            display: block;
+        }
+        
+        .team-photo-placeholder-big {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #0a1628, #112240);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            color: rgba(200, 220, 255, .35);
+        }
+        
+        .team-photo-placeholder-big i {
+            font-size: 4rem;
+        }
+        
+        .team-photo-placeholder-big p {
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+        }
+        /* ══ MATÉRIEL ══ */
+        
+        #materiel {
+            background: #0d1b2e;
+        }
+        
+        .materiel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .materiel-card {
+            background: #112240;
+            border: 1px solid rgba(100, 160, 255, .12);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border-top: 2px solid transparent;
+            transition: all .25s;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .materiel-card:hover {
+            border-top-color: #6ab0ff;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
+            transform: translateY(-4px);
+        }
+        
+        .mat-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0a1628, #1a2e50);
+            border: 1px solid rgba(100, 160, 255, .2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .mat-name {
+            font-size: .9rem;
+            font-weight: 800;
+            color: #c8ddf5;
+            margin-bottom: .3rem;
+        }
+        
+        .mat-qty {
+            font-size: .72rem;
+            font-weight: 700;
+            color: #6ab0ff;
+            margin-bottom: .5rem;
+        }
+        
+        .mat-desc {
+            font-size: .78rem;
+            color: #7aa0c8;
+            line-height: 1.5;
+        }
+        /* ══ DIFFICULTÉS & SOLUTIONS ══ */
+        
+        #difficultes {
+            background: #0a1628;
+        }
+        
+        #solutions {
+            background: #0d1b2e;
+        }
+        
+        .ds-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .ds-card {
+            background: #112240;
+            border: 1px solid rgba(100, 160, 255, .1);
+            border-radius: var(--radius);
+            padding: 1.8rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid transparent;
+            transition: box-shadow .2s;
+        }
+        
+        #difficultes .ds-card {
+            border-top-color: var(--red);
+        }
+        
+        #solutions .ds-card {
+            border-top-color: var(--gold);
+        }
+        
+        .ds-card:hover {
+            box-shadow: var(--shadow-h);
+        }
+        
+        .ds-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        
+        #difficultes .ds-num {
+            background: var(--red);
+        }
+        
+        #solutions .ds-num {
+            background: var(--gold);
+        }
+        
+        .ds-title {
+            font-size: .9rem;
+            font-weight: 800;
+            color: #c8ddf5;
+            margin-bottom: .5rem;
+        }
+        
+        .ds-body {
+            font-size: .82rem;
+            color: #7aa0c8;
+            line-height: 1.6;
+        }
+        /* ══ BUDGET ══ */
+        
+        #budget {
+            background: #0a1628;
+        }
+        
+        .budget-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 2rem auto 0;
+        }
+        
+        .budget-card {
+            background: #112240;
+            border: 1px solid rgba(100, 160, 255, .12);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 2rem 1.8rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .budget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-h);
+        }
+        
+        .budget-card.total {
+            background: var(--red);
+            border-color: transparent;
+        }
+        
+        .budget-card.total .budget-card-title,
+        .budget-card.total .budget-card-amount,
+        .budget-card.total .budget-card-desc {
+            color: white;
+        }
+        
+        .budget-card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #7aa0c8;
+            margin-bottom: 0.75rem;
+        }
+        
+        .budget-card.total .budget-card-title {
+            color: rgba(255, 255, 255, .9);
+        }
+        
+        .budget-card-amount {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #c8ddf5;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+        
+        .budget-card-amount span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #7aa0c8;
+            display: inline-block;
+            margin-left: 0.2rem;
+        }
+        
+        .budget-card.total .budget-card-amount {
+            color: white;
+        }
+        
+        .budget-card.total .budget-card-amount span {
+            color: rgba(255, 255, 255, .7);
+        }
+        
+        .budget-card-desc {
+            font-size: 0.75rem;
+            color: #7aa0c8;
+            line-height: 1.5;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        
+        .budget-card.total .budget-card-desc {
+            color: rgba(255, 255, 255, .8);
+        }
+        /* ══ MEMBRES ══ */
+        
+        #membres {
+            background: #0d1b2e;
+        }
+        
+        .members-grid-rect {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .member-card-rect {
+            background: #112240;
+            border: 1px solid rgba(100, 160, 255, .12);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .member-card-rect:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+        }
+        
+        .member-photo-rect {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a1628, #1a2e50);
+        }
+        
+        .member-photo-rect img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .member-card-rect:hover .member-photo-rect img {
+            transform: scale(1.05);
+        }
+        
+        .member-role-rect {
+            position: absolute;
+            top: 16px;
+            left: 0;
+            padding: 0.4rem 1.2rem 0.4rem 1rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: white;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+            z-index: 2;
+        }
+        
+        .role-elec {
+            background: #1a3a6e;
+            border: 1px solid rgba(100, 160, 255, .3);
+        }
+        
+        .role-prog {
+            background: #0d7a4b;
+        }
+        
+        .role-design {
+            background: #7c3aed;
+        }
+        
+        .member-info-rect {
+            padding: 1.5rem 1.2rem;
+            text-align: center;
+        }
+        
+        .member-name-rect {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #c8ddf5;
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+        
+        .member-school-rect {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .member-major-rect {
+            font-size: 0.8rem;
+            color: #7aa0c8;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+            line-height: 1.5;
+            min-height: 2.4rem;
+        }
+        
+        .member-socials-rect {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            padding-top: 0.3rem;
+        }
+        
+        .social-rect {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: white;
+        }
+        
+        .social-rect.whatsapp {
+            background: #25d366;
+        }
+        
+        .social-rect.facebook {
+            background: #1877f2;
+        }
+        
+        .social-rect.instagram {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+        
+        .social-rect.linkedin {
+            background: #0a66c2;
+        }
+        
+        .social-rect:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .35);
+        }
+        
+        @media (max-width: 640px) {
+            .members-grid-rect {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+            }
+            .member-photo-rect {
+                aspect-ratio: 4/5;
+            }
+        }
+        /* ══ FOOTER ══ */
+        
+        footer {
+            background: #060e1a;
+            padding: 3.5rem 5vw 2rem;
+            border-top: 1px solid rgba(100, 160, 255, .1);
+        }
+        
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(100, 160, 255, .1);
+        }
+        
+        .footer-col {
+            flex: 1 1 250px;
+            min-width: 200px;
+        }
+        
+        .footer-brand-name {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #c8ddf5;
+            margin-bottom: .4rem;
+        }
+        
+        .footer-brand-name span {
+            color: var(--gold-l);
+        }
+        
+        .footer-tagline {
+            font-size: .78rem;
+            color: rgba(200, 220, 255, .4);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-text {
+            font-size: .8rem;
+            color: rgba(200, 220, 255, .6);
+            line-height: 1.6;
+            max-width: 300px;
+        }
+        
+        .footer-title {
+            font-size: .9rem;
+            font-weight: 800;
+            color: #c8ddf5;
+            margin-bottom: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+        
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+        }
+        
+        .footer-nav a {
+            font-size: .78rem;
+            color: rgba(200, 220, 255, .5);
+            text-decoration: none;
+            transition: color .2s;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--gold-l);
+        }
+        
+        .footer-contact-item {
+            font-size: .78rem;
+            color: rgba(200, 220, 255, .6);
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            margin-bottom: .6rem;
+        }
+        
+        .footer-contact-item a {
+            color: rgba(200, 220, 255, .6);
+            text-decoration: none;
+        }
+        
+        .footer-contact-item a:hover {
+            color: var(--gold-l);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: .5rem;
+            margin-top: .5rem;
+        }
+        
+        .footer-social .social-rect {
+            width: 34px;
+            height: 34px;
+            font-size: .85rem;
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .footer-copy {
+            font-size: .7rem;
+            color: rgba(200, 220, 255, .25);
+        }
+        
+        .footer-school {
+            font-size: .7rem;
+            color: rgba(200, 220, 255, .25);
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }
+        
+        .footer-school i {
+            color: var(--gold);
+        }
+        /* ══ STATS STRIP ══ */
+        
+        .stats-strip {
+            background: var(--red);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 1.8rem 5vw;
+            gap: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-num {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #fff;
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: .62rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .75);
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            margin-top: .3rem;
+            display: block;
+        }
+        /* ══ SCROLL REVEAL ══ */
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .6s, transform .6s;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* ══ RESPONSIVE ══ */
+        
+        @media (max-width:900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-bottom: 80px;
+            }
+            .hero-btns {
+                justify-content: center;
+            }
+            .hero-devise {
+                text-align: left;
+            }
+            .hero-visual {
+                display: none;
+            }
+            .robot-layout {
+                grid-template-columns: 1fr;
+            }
+            .ds-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width:640px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+                position: fixed;
+                inset: 68px 0 0;
+                background: #0a1628;
+                padding: 2rem 5vw;
+                z-index: 999;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, .4);
+            }
+            .nav-links.open a {
+                font-size: .9rem;
+                padding: .8rem 1rem;
+            }
+            .budget-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══ NAV ══ -->
+    <nav>
+        <div class="nav-logo">
+            <svg class="nav-logo-svg" viewBox="0 0 44 44" fill="none">
+              <rect width="44" height="44" rx="8" fill="#0a1628"/>
+              <rect x="8"  y="8"  width="8" height="8" fill="#e8192c"/>
+              <rect x="18" y="8"  width="8" height="8" fill="#c9972a"/>
+              <rect x="28" y="8"  width="8" height="8" fill="#e8192c"/>
+              <rect x="8"  y="18" width="8" height="8" fill="#c9972a"/>
+              <rect x="18" y="18" width="8" height="8" fill="#4a7cc0"/>
+              <rect x="28" y="18" width="8" height="8" fill="#c9972a"/>
+              <rect x="8"  y="28" width="8" height="8" fill="#e8192c"/>
+              <rect x="18" y="28" width="8" height="8" fill="#c9972a"/>
+              <rect x="28" y="28" width="8" height="8" fill="#e8192c"/>
+            </svg>
+            <span class="nav-brand">TEAM <span>PIXEL</span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero">Accueil</a></li>
+            <li><a href="#robot">Robot</a></li>
+            <li><a href="#photo-equipe">Photo</a></li>
+            <li><a href="#materiel">Matériel</a></li>
+            <li><a href="#difficultes">Difficultés</a></li>
+            <li><a href="#budget">Budget</a></li>
+            <li><a href="#membres">Membres</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+        </div>
+    </nav>
+
+    <!-- ══ HERO ══ -->
+    <section id="hero">
+        <div class="hero-bar"></div>
+        <div class="hero-shape hs1"></div>
+        <div class="hero-shape hs2"></div>
+        <div class="hero-shape hs3"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-tag">Olympiades de Robotique UCAO — Éd. 2026</div>
+                <h1 class="hero-title">
+                    Team<br/><span class="accent">PIXEL</span>
+                </h1>
+                <div class="hero-devise">
+                    «La vision naît d'un PIXEL, l'innovation naît de nous.»
+                </div>
+                <div class="hero-meta">
+                    <div class="hero-meta-item"><i class="fas fa-map-pin"></i> UCAO-UUC</div>
+                </div>
+                <div class="hero-btns">
+                    <a href="#robot" class="btn btn-red"><i class="fas fa-robot"></i> Découvrir le robot</a>
+                    <a href="#membres" class="btn btn-white"><i class="fas fa-users"></i> L'équipe</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-photo-main">
+                    <div class="hero-photo-placeholder">
+                        <i class="fas fa-microchip"></i>
+                        <p>Photo du robot<br>à venir</p>
+                    </div>
+                </div>
+                <div class="hero-badge hb1">
+                    <span class="hb-num">5s</span>
+                    <span class="hb-label">parcours</span>
+                </div>
+                <div class="hero-badge hb2">
+                    <span class="hb-num">20</span>
+                    <span class="hb-label">précision</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ STATS STRIP ══ -->
+    <div class="stats-strip">
+        <div class="stat-item"><span class="stat-num">7</span><span class="stat-label">Membres</span></div>
+        <div class="stat-item"><span class="stat-num">UCAO</span><span class="stat-label">Ecole</span></div>
+        <div class="stat-item"><span class="stat-num">1ère</span><span class="stat-label">Participations</span></div>
+    </div>
+
+    <!-- ══ ROBOT ══ -->
+    <section id="robot" class="reveal">
+        <div class="section-header">
+            <span class="section-eyebrow">Notre fierté</span>
+            <h2 class="section-title">Le robot <span>Robot suiveur de ligne-Design Formule 1</span></h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Un concentré de technologie conçu pour performer.</p>
+        </div>
+        <div class="robot-layout">
+            <div class="robot-intro">
+                <h3 class="robot-intro-title">Présentation du Robot</h3>
+                <p class="robot-intro-text">Notre robot suiveur de ligne au design inspiré de la Formule 1 combine performance, précision et stabilité. Il est le fruit d'une collaboration stratégique entre les équipes électronique, programmation et design.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ PHOTO ÉQUIPE ══ -->
+    <section id="photo-equipe" class="reveal">
+        <div class="section-header">
+            <span class="section-eyebrow">Les PIXELS</span>
+
+            <h2 class="section-title">Photo d<span>'</span>équipe</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Les visages derrière la machine.</p>
+        </div>
+        <div class="team-photo-wrap">
+            <img src="photomembre.jpg" alt="Photo de l'équipe Team PIXEL">
+        </div>
+    </section>
+
+    <!-- ══ MATÉRIEL ══ -->
+    <section id="materiel" class="reveal">
+        <div class="section-header">
+            <span class="section-eyebrow">L'arsenal</span>
+            <h2 class="section-title">Matériel <span>& composants</span></h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Tout ce que nous utilisons pour construire et programmer.</p>
+        </div>
+        <div class="materiel-grid">
+            <div class="materiel-card">
+                <div class="mat-icon"><i class="fas fa-robot" style="color:var(--gold-l);"></i></div>
+                <div class="mat-name">Chassis F1 personnalisé</div>
+                <div class="mat-desc">Structure mécanique inspirée d'une Formule 1 servant de support pour tous les composants</div>
+            </div>
+            <div class="materiel-card">
+                <div class="mat-icon"><i class="fas fa-microchip" style="color:var(--gold-l);"></i></div>
+                <div class="mat-name">Carte Arduino</div>
+                <div class="mat-desc">Microcontrôleur principale permettant de programmer et controler tous les composants du robot.</div>
+            </div>
+            <div class="materiel-card">
+                <div class="mat-icon"><i class="fas fa-satellite-dish" style="color:var(--gold-l);"></i></div>
+                <div class="mat-name">Capteur ultrason</div>
+                <div class="mat-desc">Capteur de distance permettant de détecter les obstacles devant le robot.</div>
+            </div>
+            <div class="materiel-card">
+                <div class="mat-icon"><i class="fas fa-bolt" style="color:var(--gold-l);"></i></div>
+                <div class="mat-name">Moteurs DC</div>
+                <div class="mat-desc">Moteurs à curant continu permettant le déplacement et la propulsion du chassis.</div>
+            </div>
+            <div class="materiel-card">
+                <div class="mat-icon"><i class="fas fa-eye" style="color:var(--gold-l);"></i></div>
+                <div class="mat-name">Capteurs infrarouges</div>
+                <div class="mat-desc">Suis les lignes grace à l'émission et à la réception de signaux infrarouges.</div>
+            </div>
+            <div class="materiel-card">
+                <div class="mat-icon"><i class="fas fa-battery-three-quarters" style="color:var(--gold-l);"></i></div>
+                <div class="mat-name">Batterie Rechargeable</div>
+                <div class="mat-desc">Source d'énergie pour alimenter les composants du robot.</div>
+            </div>
+            <div class="materiel-card">
+                <div class="mat-icon"><i class="fas fa-truck-monster" style="color:var(--gold-l);"></i></div>
+                <div class="mat-name">Roues</div>
+                <div class="mat-desc">Permettant le déplacement physique du robot et assurant l'adhérence au sol.</div>
+            </div>
+            <div class="materiel-card">
+                <div class="mat-icon"><i class="fas fa-cogs" style="color:var(--gold-l);"></i></div>
+                <div class="mat-name">Cerveau moteurs</div>
+                <div class="mat-desc">Logique embarquée programmée pour gérer les décisions et les réactions du robot.</div>
+            </div>
+            <div class="materiel-card">
+                <div class="mat-icon"><i class="fas fa-computer" style="color:var(--gold-l);"></i></div>
+                <div class="mat-name">Ordinateurs de développement</div>
+                <div class="mat-desc">Utilisés pour programmer la carte Arduino, tester et téléverser le code du projet.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ DIFFICULTÉS ══ -->
+    <section id="difficultes" class="reveal">
+        <div class="section-header">
+            <span class="section-eyebrow">Obstacles</span>
+            <h2 class="section-title">Difficultés <span>rencontrées</span></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="ds-grid">
+            <div class="ds-card">
+                <div class="ds-num">1</div>
+                <div class="ds-title">Instabilité à grande vitesse</div>
+                <div class="ds-body">Le robot perdait en précision et en stabilité lors des accélérations importantes.</div>
+            </div>
+            <div class="ds-card">
+                <div class="ds-num">2</div>
+                <div class="ds-title">Mauvaise calibration des capteurs</div>
+                <div class="ds-body">Les capteurs infrarouges donnaient des lectures imprécises, affectant le suivi de ligne.</div>
+            </div>
+            <div class="ds-card">
+                <div class="ds-num">3</div>
+                <div class="ds-title">Déséquilibre moteur gauche/droite</div>
+                <div class="ds-body">Une différence de puissance entre les moteurs provoquait une déviation du robot.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ SOLUTIONS ══ -->
+    <section id="solutions" class="reveal">
+        <div class="section-header">
+            <span class="section-eyebrow">Solutions</span>
+            <h2 class="section-title">Des améliorations techniques et stratégiques ont été mises en place pour optimiser la stabilité et la précision du<span> robot.</span></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="ds-grid">
+            <div class="ds-card">
+                <div class="ds-num">1</div>
+                <div class="ds-title">Optimisation du contrôle</div>
+                <div class="ds-body">Amélioration de l'algorithme pour stabiliser la trajectoire à haute vitesse.</div>
+            </div>
+            <div class="ds-card">
+                <div class="ds-num">2</div>
+                <div class="ds-title">Calibration précise des capteurs</div>
+                <div class="ds-body">Réglage fin des capteurs pour garantir une détection fiable et constante.</div>
+            </div>
+            <div class="ds-card">
+                <div class="ds-num">3</div>
+                <div class="ds-title">Amélioration du centre de gravité</div>
+                <div class="ds-body">Réorganisation des composants pour mieux répartir le poids et stabiliser le robot.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ BUDGET ══ -->
+    <section id="budget" class="reveal">
+        <div class="section-header">
+            <span class="section-eyebrow">Finances</span>
+            <h2 class="section-title">Budget <span>du projet</span></h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Répartition des coûts engagés pour la conception et la participation à la compétition.</p>
+        </div>
+        <div class="budget-cards">
+            <div class="budget-card">
+                <div class="budget-card-title">Matériel</div>
+                <div class="budget-card-amount">50 000 <span>FCFA</span></div>
+                <div class="budget-card-desc">Composants électroniques, moteurs, châssis, capteurs...</div>
+            </div>
+            <div class="budget-card">
+                <div class="budget-card-title">Inscription Compétition</div>
+                <div class="budget-card-amount">20 000 <span>FCFA</span></div>
+                <div class="budget-card-desc">Frais d'engagement aux Olympiades UCAO 2026</div>
+            </div>
+            <div class="budget-card total">
+                <div class="budget-card-title">Total</div>
+                <div class="budget-card-amount">70 000 <span>FCFA</span></div>
+                <div class="budget-card-desc">Budget global toutes dépenses confondues</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ MEMBRES ══ -->
+    <section id="membres" class="reveal">
+        <div class="section-header">
+            <span class="section-eyebrow">Notre équipe</span>
+            <h2 class="section-title">Les membres de la <span>Team PIXEL</span></h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Découvrez les talents qui font avancer notre projet de robotique.</p>
+        </div>
+        <div class="members-grid-rect">
+            <div class="member-card-rect">
+                <div class="member-photo-rect">
+                    <div class="member-role-rect role-elec">Électronique</div>
+                    <img src="josue.jpg" alt="Josué HOUNGBADJI">
+                </div>
+                <div class="member-info-rect">
+                    <h3 class="member-name-rect">Josué HOUNGBADJI</h3>
+                    <div class="member-school-rect">UCAO-UUC</div>
+                    <div class="member-major-rect">Informatique Industrielle et Maintenance</div>
+                    <div class="member-socials-rect">
+                        <a href="https://wa.me/qr/ZQE7ROP6HGATI1" class="social-rect whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61586025486413" class="social-rect facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-rect instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-rect linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="member-card-rect">
+                <div class="member-photo-rect">
+                    <div class="member-role-rect role-elec">Électronique</div>
+                    <img src="warren.jpg" alt="HOUNKANRIN Byll Warren">
+                </div>
+                <div class="member-info-rect">
+                    <h3 class="member-name-rect">HOUNKANRIN Byll Warren</h3>
+                    <div class="member-school-rect">UCAO-UUC</div>
+                    <div class="member-major-rect">Informatique Industrielle et Maintenance</div>
+                    <div class="member-socials-rect">
+                        <a href="https://wa.me/qr/X2JVWF4HR4FYL1" class="social-rect whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/warrenhkr17" class="social-rect facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/warren__hkr?igsh=bXMwZXpiZ3lnb3gx" class="social-rect instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/byll-warren-hounkanrin-686148385?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-rect linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="member-card-rect">
+                <div class="member-photo-rect">
+                    <div class="member-role-rect role-elec">Électronique</div>
+                    <img src="theophane.jpg" alt="HOUNMENNOU Théophane">
+                </div>
+                <div class="member-info-rect">
+                    <h3 class="member-name-rect">HOUNMENNOU Théophane</h3>
+                    <div class="member-school-rect">UCAO-UUC</div>
+                    <div class="member-major-rect">Génie Télécom</div>
+                    <div class="member-socials-rect">
+                        <a href="https://wa.me/qr/Z47OUT7JZUV2E1" class="social-rect whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/theophane.222008" class="social-rect facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/the0s_phan0s?igsh=MW5rZ3hlZHUyaGE1bg==" class="social-rect instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-rect linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="member-card-rect">
+                <div class="member-photo-rect">
+                    <div class="member-role-rect role-elec">Électronique</div>
+                    <img src="charbel.jpg" alt="SEGBEGNON Charbel">
+                </div>
+                <div class="member-info-rect">
+                    <h3 class="member-name-rect">SEGBEGNON Charbel</h3>
+                    <div class="member-school-rect">UCAO-UUC</div>
+                    <div class="member-major-rect">Génie Télécom</div>
+                    <div class="member-socials-rect">
+                        <a href="#" class="social-rect whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61582075109273" class="social-rect facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-rect instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-rect linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="member-card-rect">
+                <div class="member-photo-rect">
+                    <div class="member-role-rect role-prog">Programmation</div>
+                    <img src="yoane.jpg" alt="TOGBETO Yoane">
+                </div>
+                <div class="member-info-rect">
+                    <h3 class="member-name-rect">TOGBETO Yoane</h3>
+                    <div class="member-school-rect">UCAO-UUC</div>
+                    <div class="member-major-rect">Informatique Industrielle et Maintenance</div>
+                    <div class="member-socials-rect">
+                        <a href="#" class="social-rect whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-rect facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-rect instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-rect linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="member-card-rect">
+                <div class="member-photo-rect">
+                    <div class="member-role-rect role-prog">Programmation</div>
+                    <img src="orvann.jpg" alt="FLATIN Louis-Orvann">
+                </div>
+                <div class="member-info-rect">
+                    <h3 class="member-name-rect">FLATIN Louis-Orvann</h3>
+                    <div class="member-school-rect">UCAO-UUC</div>
+                    <div class="member-major-rect">Informatique Industrielle et Maintenance</div>
+                    <div class="member-socials-rect">
+                        <a href="#" class="social-rect whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/luis.orvann.2025" class="social-rect facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/luisorvann?igsh=N2RqYjhiZmpjYXps" class="social-rect instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-rect linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="member-card-rect">
+                <div class="member-photo-rect">
+                    <div class="member-role-rect role-design">Design</div>
+                    <img src="urielle.jpg" alt="AIDEKON Urielle">
+                </div>
+                <div class="member-info-rect">
+                    <h3 class="member-name-rect">AIDEKON Urielle</h3>
+                    <div class="member-school-rect">UCAO-UUC</div>
+                    <div class="member-major-rect">Informatique Industrielle et Maintenance</div>
+                    <div class="member-socials-rect">
+                        <a href="https://wa.me/2290192780707" class="social-rect whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61582833963665" class="social-rect facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/urielle775?igsh=cXY5MzFsdmtrbWw0" class="social-rect instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-rect linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-col footer-about">
+                <h3 class="footer-title">À Propos</h3>
+                <p class="footer-text">
+                    @2026 PIXEL Robotics - Projet UCAO-TECH<br> UCAO-TECH - Olympiade de Robotique UCAO<br> PIXEL Robotics<br> La vision naît d'un PIXEL, l'innovation naît de nous<br> Robot Suiveur de Ligne - Design Formule 1
+                </p>
+            </div>
+            <div class="footer-col footer-contact">
+                <h3 class="footer-title">Contact</h3>
+                <div class="footer-contact-item"><i class="fas fa-phone"></i> (229) 01 41 63 78 98</div>
+                <div class="footer-contact-item"><i class="fas fa-envelope"></i> <a href="mailto:ucao.tech@gmail.com">ucao.tech@gmail.com</a></div>
+                <h3 class="footer-title" style="margin-top:1.2rem;">Suivez-nous</h3>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/profile.php?id=61587814015373" aria-label="Facebook" class="social-rect facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/ucaotech2026?igsh=MTVtM2plenF1em02bw==" aria-label="Instagram" class="social-rect instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/ucao-tech/" aria-label="LinkedIn" class="social-rect linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col footer-vision">
+                <h3 class="footer-title">Notre Vision</h3>
+                <p class="footer-text">Unis pour la technologie, ensemble vers l'innovation</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">© 2026 Team PIXEL — Tous droits réservés.</div>
+            <div class="footer-school"><i class="fas fa-university"></i> UCAO-UUC</div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('open');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function checkReveal() {
+            for (let el of revealElements) {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 150) el.classList.add('visible');
+            }
+        }
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', () => {
+            checkReveal();
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+                document.querySelector('#theme-toggle i').className = 'fas fa-sun';
+            }
+        });
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const icon = document.querySelector('#theme-toggle i');
+            if (document.body.classList.contains('dark')) {
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (pageYOffset >= section.offsetTop - 100) current = section.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -45,6 +45,3 @@ Pour toute question concernant la compétition :
 <div align="center">
 
 *ORU 2026 — Olympiade de Robotique UCAO-UUC Bénin*
-
-</div>
->>>>>>> 2d9dd554a7af51abea47330d6e574f072bbd1268
